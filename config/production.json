@@ -1,0 +1,33 @@
+{
+  "db": {
+    "dialect": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "loggingToConsole": false,
+    "sync": false
+  },
+  "logger": {
+    "console": {
+      "level": "error"
+    }
+  },
+  "rabbitmq": {
+    "host": "localhost",
+    "port": 5672
+  },
+  "express": {
+    "port": 4300,
+    "viewCache": false
+  },
+  "graphql": {
+    "port": 4000
+  },
+  "url": "https://sizr.kalaus.ru",
+  "token": {
+    "ttl": 2592000
+  },
+  "shopify": {
+    "scope": ["read_products", "read_content", "write_content"],
+    "name": "test-app-1055"
+  }
+}

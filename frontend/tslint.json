@@ -1,0 +1,16 @@
+{
+  "extends": "tslint-config-airbnb",
+  "rulesDirectory": [
+    "codelyzer"
+  ],
+  "component-class-suffix": true,
+  "directive-class-suffix": true,
+  "no-console": [
+    true,
+    "debug",
+    "info",
+    "time",
+    "timeEnd",
+    "trace"
+  ]
+}

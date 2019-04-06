@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "auction": "Auctions",
+    "bot": "Bot",
+    "subscription": "Subscription"
+  },
+  "auction": {
+    "list": {
+      "add": "Create Auction",
+      "title": "Name",
+      "lots": "Lots",
+      "products": "Products",
+      "empty": "You do not have Auctions."
+    },
+    "form": {
+      "title": {
+        "label": "Auction Name"
+      },
+      "path": {
+        "label": "Auction URL"
+      },
+      "error": {
+        "title": {
+          "same": "Auction with the same title already exists"
+        },
+        "path": {
+          "same": "Auction with the same URL already exists"
+        }
+      }
+    },
+    "add": {
+      "submit": {
+        "label": "Add Auction"
+      },
+      "error": {
+        "success": "Auction Created"
+      }
+    },
+    "edit": {
+      "submit": {
+        "label": "Save Auction"
+      },
+      "error": {
+        "success": "Auction Updated"
+      }
+    },
+    "remove": {
+      "text": "This will delete Auction and all related lots. Continue?",
+      "error": {
+        "success": "Auction Deleted"
+      }
+    }
+  },
+  "product": {
+    "list": {
+      "add": "Add Product",
+      "title": "Title",
+      "empty": "You do not have Products."
+    },
+    "form": {
+      "oid": {
+        "label": "Product ID"
+      },
+      "error": {
+        "title": {
+          "same": "Product with the same title already exists"
+        },
+        "oid": {
+          "same": "Product with the same ID already exists"
+        }
+      }
+    },
+    "add": {
+      "submit": {
+        "label": "Add Product"
+      },
+      "error": {
+        "success": "Product Added"
+      }
+    },
+    "edit": {
+      "submit": {
+        "label": "Save Product"
+      },
+      "error": {
+        "success": "Product Updated"
+      }
+    },
+    "remove": {
+      "text": "This will delete Product and all related lots. Continue?",
+      "error": {
+        "success": "Product Deleted"
+      }
+    }
+  },
+  "singin": {
+    "form": {
+      "login": {
+        "label": "Email"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "submit": {
+        "label": "Signin"
+      },
+      "error": {
+        "login": {
+          "exist": "Email not registered"
+        },
+        "password": {
+          "password": "Password Incorrect"
+        }
+      }
+    },
+    "error": {
+      "success": "Welcome!"
+    }
+  },
+  "form": {
+    "error": {
+      "required": "Field is required",
+      "minlength": "Minimum {{requiredLength}} chars",
+      "maxlength": "Maximum {{requiredLength}} chars"
+    }
+  },
+  "header": {
+    "logout": "Sign Out"
+  },
+  "global": {
+    "cancel": "Cancel",
+    "remove": "Remove",
+    "edit": "Edit",
+    "ok": "Ok"
+  }
+}

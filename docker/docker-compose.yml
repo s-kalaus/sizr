@@ -1,0 +1,64 @@
+version: '3'
+
+networks:
+  sizr:
+
+services:
+  sizr-mysql-development:
+    build: sizr-mysql
+    tty: true
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+     - ./sizr-mysql/conf/conf.d:/etc/mysql/conf.d
+    networks:
+      sizr:
+
+  sizr-redis-development:
+    build: sizr-redis
+    tty: true
+    networks:
+      sizr:
+
+  sizr-rabbitmq-development:
+    build: sizr-rabbitmq
+    tty: true
+    networks:
+      sizr:
+
+  sizr-nginx-development:
+    build: sizr-nginx
+    tty: true
+    depends_on:
+     - sizr-runner-development
+    volumes:
+     - ./sizr-nginx/conf/init.sh:/root/host/init.sh
+     - ./sizr-nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+     - ./sizr-nginx/conf/squid.conf:/etc/squid/squid.conf
+     - /etc/ssl/certs/sizr:/etc/nginx/ssl
+    ports:
+     - "8385:8181"
+    command: ${PROXY_PASSWORD:-}
+    networks:
+      sizr:
+        aliases:
+          - sizr.kalaus.ru
+          - a.cdn.sizr.kalaus.ru
+          - b.cdn.sizr.kalaus.ru
+          - c.cdn.sizr.kalaus.ru
+          - d.cdn.sizr.kalaus.ru
+
+  sizr-runner-development:
+    build: sizr-development
+    tty: true
+    depends_on:
+     - sizr-mysql-development
+     - sizr-rabbitmq-development
+    env_file:
+     - ./sizr-development/conf/development.env
+    volumes:
+     - ./sizr-development/conf/init.sh:/root/host/init.sh
+     - ..:/var/www/sizr
+     - ./sizr-development/conf/ecosystem.config.js:/var/www/sizr/ecosystem.config.js
+    networks:
+      sizr:

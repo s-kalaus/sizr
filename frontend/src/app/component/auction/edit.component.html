@@ -1,0 +1,13 @@
+<ng-container *ngIf="!loadingService.isLoading('auction-detail')">
+  <app-auction-form
+    *ngIf="auction$ | async as auction"
+    successMessage="auction.edit.error.success"
+    submitMethod="update"
+    [submitParams]="[auction.auctionId]"
+    submitCta="auction.edit.submit.label"
+    [model]="auction"
+  ></app-auction-form>
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('auction-detail')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

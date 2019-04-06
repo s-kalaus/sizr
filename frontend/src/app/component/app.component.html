@@ -1,0 +1,12 @@
+<div class="d-flex flex-fill flex-column py-3" [ngClass]="{'container-fluid': layoutService.isApp, 'container': !layoutService.isApp}">
+  <ng-container *ngIf="authService.isAuthenticated()">
+    <app-header
+      class="d-block mb-4"
+      *ngIf="!layoutService.isApp"
+    ></app-header>
+    <app-nav
+      class="d-block mb-4"
+    ></app-nav>
+  </ng-container>
+  <router-outlet></router-outlet>
+</div>

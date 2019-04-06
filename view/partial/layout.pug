@@ -1,0 +1,15 @@
+block vars
+  - var bodyClass = '';
+
+doctype html
+
+html(class=htmlClass lang="en")
+
+  block head
+    head
+      block meta
+        include meta
+
+  block body
+    body(class=bodyClass)
+      block main

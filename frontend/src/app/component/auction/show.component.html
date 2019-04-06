@@ -1,0 +1,6 @@
+<ng-container *ngIf="!loadingService.isLoading('auction-detail')">
+  Show {{ (auction$ | async) ? (auction$ | async).auctionId : null }}
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('auction-detail')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

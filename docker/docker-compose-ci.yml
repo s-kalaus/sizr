@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  sizr-gitlab-ci:
+    build: sizr-gitlab
+    tty: true
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://kalaus.ru:3333'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+    ports:
+      - "2222:22"
+      - "3333:3333"
+    volumes:
+      - /var/gitlab/data:/var/opt/gitlab
+      - /var/gitlab/log:/var/log/gitlab
+      - /var/gitlab/conf:/etc/gitlab

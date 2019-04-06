@@ -1,0 +1,54 @@
+version: '3'
+
+networks:
+  sizr-prod:
+
+services:
+  sizr-mysql-prod:
+    build: sizr-mysql
+    tty: true
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+     - ./sizr-mysql/conf/conf.d-prod:/etc/mysql/conf.d
+     - /var/sizr-mysql:/var/lib/mysql
+    networks:
+      sizr-prod:
+
+  sizr-rabbitmq-prod:
+    build: sizr-rabbitmq
+    tty: true
+    networks:
+      sizr-prod:
+    volumes:
+      - /var/sizr-rabbitmq:/var/lib/rabbitmq
+
+  sizr-nginx-prod:
+    build: sizr-nginx
+    tty: true
+    depends_on:
+     - sizr-runner-prod
+    volumes:
+     - ./sizr-nginx/conf/init-prod.sh:/root/host/init.sh
+     - ./sizr-nginx/conf/nginx-prod.conf:/etc/nginx/nginx.conf
+     - /etc/ssl/certs/sizr:/etc/nginx/ssl
+     - ..:/var/www/sizr
+    ports:
+     - "7676:80"
+    networks:
+      sizr-prod:
+
+  sizr-runner-prod:
+    build: sizr-runner
+    tty: true
+    depends_on:
+     - sizr-mysql-prod
+     - sizr-rabbitmq-prod
+    env_file:
+     - ./sizr-runner/conf/prod.env
+    volumes:
+     - ./sizr-runner/conf/init-prod.sh:/root/host/init.sh
+     - ..:/var/www/sizr
+     - ./sizr-runner/conf/ecosystem.config-prod.js:/var/www/sizr/ecosystem.config.js
+    networks:
+      sizr-prod:

@@ -1,0 +1,22 @@
+stages:
+  - test
+  - build-prod
+
+cache:
+  key: "v1"
+  paths:
+    - node_modules/
+    - frontend/node_modules/
+
+test:
+  stage: test
+  script:
+    - make test
+
+build-prod:
+  stage: build-prod
+  script:
+    - make build-prod
+  only:
+    - master
+

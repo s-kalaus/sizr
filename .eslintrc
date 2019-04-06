@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "parserOptions":{
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off"
+  }
+}

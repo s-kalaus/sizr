@@ -1,0 +1,9 @@
+[
+  {
+    "customerId": 1,
+    "email": "sergey.kalaus@gmail.com",
+    "firstName": "Sergey",
+    "lastName": "Kalaus",
+    "passwordHash": "$2b$04$ykMagwCyGGR7lAA63QICPetFcmWB./zm6pCaiIv6aZFTaNdt5/nc2"
+  }
+]

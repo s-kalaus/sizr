@@ -1,0 +1,10 @@
+languages:
+  - javascript
+  - css
+files:
+  - "lib/**/*"
+  - "graphql/**/*"
+  - "model/**/*"
+  - "service/**/*"
+  - "bin/**/*"
+reporter: json

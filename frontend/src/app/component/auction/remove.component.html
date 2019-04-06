@@ -1,0 +1,22 @@
+<ng-container *ngIf="!loadingService.isLoading('auction-detail')">
+  <div class="col col-sm-8 col-lg-6 px-3" *ngIf="(auction$ | async) as auction">
+    <div class="mb-4" translate>auction.remove.text</div>
+    <div>
+      <button
+        class="btn btn-primary"
+        translate
+        [disabled]="loadingService.isLoading('auction-process')"
+        (click)="remove(auction)"
+      >global.ok</button>
+
+      <a
+        class="btn btn-default ml-3"
+        translate
+        [routerLink]="[layoutService.path, 'auction']"
+      >global.cancel</a>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('auction-detail')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

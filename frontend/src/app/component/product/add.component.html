@@ -1,0 +1,40 @@
+<ng-container *ngIf="!loadingService.isLoading('product-detail')">
+  <form
+    novalidate
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="col col-sm-8 col-lg-6 px-3"
+  >
+
+    <div class="form-group mb-2">
+      <label class="d-block mb-2" for="product-oid" translate>product.form.oid.label</label>
+      <input
+        id="product-oid"
+        class="form-control"
+        [class.is-invalid]="formErrors.oid"
+        formControlName="oid"
+        name="oid"
+        required
+      >
+      <div
+        class="invalid-feedback d-block"
+        [class.invisible]="!formErrors.oid"
+      >{{ formErrors.oid.text | translate: formErrors.oid.meta }}&nbsp;</div>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      translate
+      [disabled]="loadingService.isLoading('product-process')"
+    >product.add.submit.label</button>
+
+    <a
+      class="btn btn-default ml-3"
+      translate
+      [routerLink]="[layoutService.path, 'auction', auctionId, 'product']"
+    >global.cancel</a>
+  </form>
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('product-detail')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

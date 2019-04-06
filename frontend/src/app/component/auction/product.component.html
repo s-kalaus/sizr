@@ -1,0 +1,6 @@
+<ng-container *ngIf="!loadingService.isLoading('auction-detail')">
+  <router-outlet></router-outlet>
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('auction-detail')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

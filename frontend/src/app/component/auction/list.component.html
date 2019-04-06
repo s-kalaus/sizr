@@ -1,0 +1,45 @@
+<ng-container *ngIf="!loadingService.isLoading('auction-list')">
+  <div class="text-right mb-4">
+    <a
+      class="btn btn-primary"
+      translate
+      [routerLink]="[layoutService.path, 'auction', 'add']"
+    >auction.list.add</a>
+  </div>
+
+  <ng-container *ngIf="(auctions$ | async).length">
+    <table class="table table-hover">
+      <tr>
+        <th class="px-3 bg-white" translate>auction.list.title</th>
+        <th class="px-3 bg-white text-center" translate>auction.list.lots</th>
+        <th class="px-3 bg-white text-center" translate>auction.list.products</th>
+        <th class="px-3 bg-white">&nbsp;</th>
+      </tr>
+      <tr *ngFor="let auction of (auctions$ | async)">
+        <td class="px-3">
+          <a [routerLink]="[layoutService.path, 'auction', auction.auctionId, 'show']">{{ auction.title }}</a>
+        </td>
+        <td class="px-3 text-center">
+          0
+        </td>
+        <td class="px-3 text-center">{{ auction.productsCount }}</td>
+        <td class="px-3 text-right">
+          <div class="dropdown" dropdown>
+            <a href="javascript:;" class="mdi mdi-menu" dropdownToggle></a>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+              <li><a class="dropdown-item" [routerLink]="[layoutService.path, 'auction', auction.auctionId, 'edit']" translate>global.edit</a></li>
+              <li><a class="dropdown-item" [routerLink]="[layoutService.path, 'auction', auction.auctionId, 'product']" translate>auction.list.products</a></li>
+              <li><a class="dropdown-item" [routerLink]="[layoutService.path, 'auction', auction.auctionId, 'remove']" translate>global.remove</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="!(auctions$ | async).length">
+    <div translate>auction.list.empty</div>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('auction-list')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

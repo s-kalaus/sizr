@@ -1,0 +1,54 @@
+<div class="content-wrapper px-3 d-flex align-items-center auth theme-one bg-white">
+  <div class="row no-gutters w-100">
+    <div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
+      <div class="auto-form-wrapper pb-4">
+        <form
+          novalidate
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          class="pb-3"
+        >
+
+          <div class="form-group mb-2">
+            <label class="d-block mb-2" for="singin-login" translate>singin.form.login.label</label>
+            <input
+              id="singin-login"
+              class="form-control"
+              [class.is-invalid]="formErrors.login"
+              formControlName="login"
+              name="login"
+              required
+            >
+            <div
+              class="invalid-feedback d-block"
+              [class.invisible]="!formErrors.login"
+            >{{ formErrors.login.text | translate: formErrors.login.meta }}&nbsp;</div>
+          </div>
+
+          <div class="form-group mb-2">
+            <label class="d-block mb-2" for="singin-password" translate>singin.form.password.label</label>
+            <input
+              id="singin-password"
+              class="form-control"
+              [class.is-invalid]="formErrors.password"
+              formControlName="password"
+              name="password"
+              type="password"
+              required
+            >
+            <div
+              class="invalid-feedback d-block"
+              [class.invisible]="!formErrors.password"
+            >{{ formErrors.password.text | translate: formErrors.password.meta }}&nbsp;</div>
+          </div>
+
+          <button
+            class="btn btn-primary"
+            translate
+            [disabled]="loadingService.isLoading('singin-process')"
+          >singin.form.submit.label</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

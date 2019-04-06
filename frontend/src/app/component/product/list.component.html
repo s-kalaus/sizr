@@ -1,0 +1,37 @@
+<ng-container *ngIf="!loadingService.isLoading('product-list')">
+  <div class="text-right mb-4">
+    <a
+      class="btn btn-primary"
+      translate
+      [routerLink]="[layoutService.path, 'auction', auctionId, 'product', 'add']"
+    >product.list.add</a>
+  </div>
+
+  <ng-container *ngIf="(products$ | async).length">
+    <table class="table table-hover">
+      <tr>
+        <th class="px-3 bg-white" translate>product.list.title</th>
+        <th class="px-3 bg-white">&nbsp;</th>
+      </tr>
+      <tr *ngFor="let product of (products$ | async)">
+        <td class="px-3">
+          <a [routerLink]="[layoutService.path, 'auction', auctionId, 'product', product.productId, 'show']">{{ product.title }}</a>
+        </td>
+        <td class="px-3 text-right">
+          <div class="dropdown" dropdown>
+            <a href="javascript:;" class="mdi mdi-menu" dropdownToggle></a>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+              <li><a class="dropdown-item" [routerLink]="[layoutService.path, 'auction', auctionId, 'product', product.productId, 'remove']" translate>global.remove</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="!(products$ | async).length">
+    <div translate>product.list.empty</div>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('product-list')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

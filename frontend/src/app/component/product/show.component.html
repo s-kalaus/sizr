@@ -1,0 +1,6 @@
+<ng-container *ngIf="!loadingService.isLoading('product-detail')">
+  Show {{ (product$ | async) ? (product$ | async).productId : null }}
+</ng-container>
+<ng-container *ngIf="loadingService.isLoadingAnimated('product-detail')">
+  <app-loader class="d-block"></app-loader>
+</ng-container>

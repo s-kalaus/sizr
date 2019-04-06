@@ -1,0 +1,55 @@
+{
+  "name": "sizr",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "jscpd": "./node_modules/.bin/jscpd",
+    "test": "NODE_ENV=test ./node_modules/.bin/jest --config jest.config.json --coverage",
+    "lint": "./node_modules/.bin/eslint ./service/**/*.js ./lib/**/*.js ./graphql/**/*.js ./bin/**/*.js ./model/**/*.js"
+  },
+  "dependencies": {
+    "shopify-api-node": "^2.18.1",
+    "@shopify/shopify-express": "./fork/shopify-express-master",
+    "pug": "^2.0.3",
+    "bcrypt": "^3.0.4",
+    "jsonwebtoken": "^8.5.0",
+    "yup": "^0.26.10",
+    "moment": "^2.24.0",
+    "minimist": "^1.2.0",
+    "winston": "^3.2.1",
+    "convict": "^4.4.1",
+    "lodash": "^4.17.11",
+    "express": "^4.16.4",
+    "express-session": "^1.15.3",
+    "graphql": "^14.1.1",
+    "sequelize": "^4.43.0",
+    "mysql2": "^1.6.5",
+    "apollo-server": "^2.4.8",
+    "graphql-subscriptions": "^1.0.0",
+    "graphql-rabbitmq-subscriptions": "^1.1.0",
+    "@cdm-logger/server": "^5.0.5",
+    "graphql-middleware": "^3.0.2",
+    "graphql-shield": "^5.3.0",
+    "graphql-tools": "^4.0.4"
+  },
+  "devDependencies": {
+    "apollo": "^2.1.8",
+    "apollo-link": "^1.2.3",
+    "apollo-link-http": "^1.5.5",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-import": "^2.16.0",
+    "jest": "^23.6.0",
+    "jscpd": "^0.6.23",
+    "node-fetch": "^2.2.1",
+    "sqlite": "^3.0.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "__utils.js"
+    ]
+  }
+}

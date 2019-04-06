@@ -1,0 +1,4 @@
+{
+  "name": "sizr",
+  "testMatch": ["<rootDir>/graphql/__tests__/**/*.spec.js"]
+}
