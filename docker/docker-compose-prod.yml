@@ -34,7 +34,7 @@ services:
      - /etc/ssl/certs/sizr:/etc/nginx/ssl
      - ..:/var/www/sizr
     ports:
-     - "7676:80"
+     - "7679:80"
     networks:
       sizr-prod:
 
