@@ -89,6 +89,17 @@ const config = convict({
     format: String,
     default: 'localhost',
   },
+  redis: {
+    port: {
+      format: 'port',
+      default: 6379,
+    },
+    host: {
+      format: String,
+      env: 'SIZR_REDIS_HOST',
+      default: 'localhost',
+    },
+  },
   token: {
     secret: {
       format: String,

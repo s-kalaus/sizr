@@ -1,6 +1,6 @@
 const BaseController = require('./base');
 const ShopifyExpress = require('@shopify/shopify-express');
-const { MemoryStrategy } = require('@shopify/shopify-express/strategies');
+const { RedisStrategy } = require('@shopify/shopify-express/strategies');
 
 class ShopController extends BaseController {
   init(app) {
@@ -9,7 +9,10 @@ class ShopController extends BaseController {
       apiKey: this.app.config.get('shopify.key'),
       secret: this.app.config.get('shopify.secret'),
       scope: this.app.config.get('shopify.scope'),
-      shopStore: new MemoryStrategy(),
+      shopStore: new RedisStrategy({
+        host: this.app.config.get('redis.host'),
+        port: this.app.config.get('redis.port'),
+      }),
       afterAuth(req, res) {
         res.redirect('/express/shop');
       },

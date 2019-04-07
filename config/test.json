@@ -12,6 +12,10 @@
     "host": "localhost",
     "port": 5672
   },
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  },
   "express": {
     "port": 4300,
     "viewCache": false
